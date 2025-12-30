@@ -121,7 +121,6 @@
 
 ## Hexa-ISA Compatible Badge
 
-```
 ![zmgau0gkkmemjsrl37h](https://github.com/user-attachments/assets/c8a385bc-8b65-402d-a60b-a04aa1fffed0)<svg xmlns="http://www.w3.org/2000/svg"
      width="114.3mm" height="34.4mm" viewBox="-2 0 114.3 34.4">
 
@@ -186,7 +185,6 @@
 
   <rect x="39.5" y="20.4" width="70.6" height="0.075" rx="0.0375" fill="#1C1C1C" opacity="0.8"/>
 </svg>
-```
 
 **Usage**: Implementations passing Core v1.0 conformance tests.
 
