@@ -19,7 +19,7 @@ Hexa reframes ISA extension as a minimal representational upgrade: it introduces
 [[Hexa_ISA-Specification.md](Hexa_ISA-Specification.md)]
 
 ## 🛠️ Core Opcodes (FIXED v1.0)
-[[opcodes.md](opcodes.md)]
+[[ISA_Table.md](ISA_Table.md)]
 
 ## 🏆 Compatibility
 **Hexa-ISA Compatible** implementations MUST conform to Core v1.0  
