@@ -154,6 +154,7 @@ Independent Researcher
 ```
 
 **Repository**: [[github.com/yourusername/hexa-isa-spec](https://github.com/Selly-Yoon/Hexa-ISA)]
+
 **Paper**: [Submission to IEEE ToC / techrxiv forthcoming]
 
 ---
