@@ -86,7 +86,7 @@
 | 0x91 | `EXIST` | ∃ (exists) | Early exit |
 | 0x92 | `NEXIST` | ¬∃ | Full scan |
 
-*(Full 256 opcode table in `opcodes.md`)*
+*(Full 256 opcode table in [[ISA_Table.md](ISA_Table.md)])*
 
 ---
 
@@ -153,7 +153,7 @@ Independent Researcher
 }
 ```
 
-**Repository**: [[github.com/yourusername/hexa-isa-spec](https://github.com/Selly-Yoon/Hexa-ISA)]
+**Repository**: [[https://github.com/Selly-Yoon/Hexa-ISA](https://github.com/Selly-Yoon/Hexa-ISA)]
 
 **Paper**: [Submission to IEEE ToC / techrxiv forthcoming]
 
