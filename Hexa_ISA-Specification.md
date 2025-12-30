@@ -121,9 +121,10 @@
 
 ## Hexa-ISA Compatible Badge
 
-![zmgau0gkkmemjsrl37h](https://github.com/user-attachments/assets/c8a385bc-8b65-402d-a60b-a04aa1fffed0)
+![Hexa_ISA-compatible_badge](Hexa_ISA-compatible_badge.svg)
 
 **Usage**: Implementations passing Core v1.0 conformance tests.
+
 
 ---
 
