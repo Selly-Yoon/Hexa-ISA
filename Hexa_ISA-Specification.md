@@ -122,7 +122,7 @@
 ## Hexa-ISA Compatible Badge
 
 ```
-<svg xmlns="http://www.w3.org/2000/svg"
+![zmgau0gkkmemjsrl37h](https://github.com/user-attachments/assets/c8a385bc-8b65-402d-a60b-a04aa1fffed0)<svg xmlns="http://www.w3.org/2000/svg"
      width="114.3mm" height="34.4mm" viewBox="-2 0 114.3 34.4">
 
   <defs>
