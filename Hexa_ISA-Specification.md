@@ -153,10 +153,6 @@ Independent Researcher
 }
 ```
 
-**Repository**: [[https://github.com/Selly-Yoon/Hexa-ISA](https://github.com/Selly-Yoon/Hexa-ISA)]
-
-**Paper**: [Submission to IEEE ToC / techrxiv forthcoming]
-
 ---
 
 *Copyright © 2025 Hye-Eun Yoon (Selly).
