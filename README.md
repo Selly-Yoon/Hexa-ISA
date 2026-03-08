@@ -15,7 +15,7 @@ Hexa reframes ISA extension as a minimal representational upgrade: it introduces
 ## 📄 Full Paper
 [[Hexa ISA.pdf](docs/paper/Hexa%20ISA.pdf)]
 
-**DOI:** [10.36227/techrxiv.1374820](10.36227/techrxiv.1374820)
+**DOI:** [10.5281/zenodo.18372763](https://doi.org/10.5281/zenodo.18372763)
 
 ## 📖 Full Specification
 [[Hexa_ISA-Specification.md](docs/spec/Hexa_ISA-Specification.md)]
