@@ -1,0 +1,10 @@
+[package]
+name = "hexa-vm"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+hexa-core      = { path = "../hexa-core" }
+hexa-decoder   = { path = "../hexa-decoder" }
+hexa-trace     = { path = "../hexa-trace" }
+hexa-substrate = { path = "../hexa-substrate" }

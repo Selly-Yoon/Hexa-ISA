@@ -121,7 +121,7 @@
 
 ## Hexa-ISA Compatible Badge
 
-![Hexa_ISA-compatible_badge](Hexa_ISA-compatible_badge.svg)
+![Hexa_ISA-compatible_badge](/docs/Hexa_ISA-compatible_badge.svg)
 
 **Usage**: Implementations passing Core v1.0 conformance tests.
 

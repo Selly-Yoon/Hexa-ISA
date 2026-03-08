@@ -2,7 +2,7 @@
 
 ## **A Multi-Valued Instruction Set Architecture for Confidence-Aware and Approximate Computation**  
 [![CC BY-SA 4.0](https://img.shields.io/badge/License-CC_BY--SA_4.0-lightgrey.svg)](LICENSE)  
-![Compatible](Hexa_ISA-compatible_badge.svg)
+![Compatible](docs/Hexa_ISA-compatible_badge.svg)
 
 ### Abstract
 
@@ -13,16 +13,16 @@ Hexa reframes ISA extension as a minimal representational upgrade: it introduces
 ---
 
 ## 📄 Full Paper
-[[Hexa ISA.pdf](https://github.com/Selly-Yoon/Hexa-ISA/blob/main/Hexa%20ISA.pdf)]
+[[Hexa ISA.pdf](docs/paper/Hexa%20ISA.pdf)]
 
 **DOI:** [10.36227/techrxiv.1374820](10.36227/techrxiv.1374820)
 
 ## 📖 Full Specification
-[[Hexa_ISA-Specification.md](Hexa_ISA-Specification.md)]
+[[Hexa_ISA-Specification.md](docs/Hexa_ISA-Specification.md)]
 
 ## 🛠️ Core Opcodes (FIXED v1.0)
-[[ISA_Table.md](ISA_Table.md)]
+[[ISA_Table.md](docs/spec/ISA_Table.md)]
 
 ## 🏆 Compatibility
 **Hexa-ISA Compatible** implementations MUST conform to Core v1.0  
-[[Use this badge → Hexa_ISA-compatible_badge.svg](https://github.com/Selly-Yoon/Hexa-ISA/blob/main/Hexa_ISA-compatible_badge.svg)]
+[[Use this badge → Hexa_ISA-compatible_badge.svg](docs/Hexa_ISA-compatible_badge.svg)]

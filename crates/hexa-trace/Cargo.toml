@@ -1,0 +1,9 @@
+[package]
+name = "hexa-trace"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+hexa-core  = { path = "../hexa-core" }
+serde      = { version = "1", features = ["derive"] }
+serde_json = "1"

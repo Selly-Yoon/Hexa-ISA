@@ -1,0 +1,9 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/hexa-core",
+    "crates/hexa-decoder",
+    "crates/hexa-vm",
+    "crates/hexa-trace",
+    "crates/hexa-substrate",
+]
