@@ -8,54 +8,55 @@ pub enum Opcode {
     Legacy(u8),
 
     // 0x80-0x8F: Modal
-    Nec    = 0x80,
-    Pos    = 0x81,
-    Taut   = 0x82,
-    Cont   = 0x83,
-    ModAnd = 0x84,
-    ModOr  = 0x85,
-    ModImp = 0x86,
+    Nec,
+    Pos,
+    Taut,
+    Cont,
+    ModAnd,
+    ModOr,
+    ModImp,
 
     // 0x90-0x9F: Quantifier
-    All    = 0x90,
-    Exist  = 0x91,
-    Nexist = 0x92,
-    ExistU = 0x93,
-    RelMap = 0x94,
+    All,
+    Exist,
+    Nexist,
+    ExistU,
+    RelMap,
 
     // 0xA0-0xAF: Comparison
-    CmpMlt = 0xA0,
-    CmpMgt = 0xA1,
-    CmpInc = 0xA2,
-    CmpFuz = 0xA3,
+    CmpMlt,
+    CmpMgt,
+    CmpInc,
+    CmpFuz,
 
     // 0xB0-0xBF: Set-Theoretic
-    SetSub = 0xB0,
-    SetSup = 0xB1,
-    SetInt = 0xB2,
-    SetUni = 0xB3,
-    SetDif = 0xB4,
-    SetSym = 0xB5,
-    SetMem = 0xB6,
+    SetSub,
+    SetSup,
+    SetInt,
+    SetUni,
+    SetDif,
+    SetSym,
+    SetMem,
 
     // 0xC0-0xCF: Equivalence
-    EqId   = 0xC0,
-    EqIso  = 0xC1,
-    EqSim  = 0xC2,
-    NeqSim = 0xC3,
+    EqId,
+    EqIso,
+    EqSim,
+    NeqSim,
 
     // 0xD0-0xDF: Quantum Control
-    QPrepare  = 0xD0,
-    QSuperpose = 0xD1,
-    QEntangle = 0xD2,
-    QMeasure  = 0xD3,
+    QPrepare,
+    QSuperpose,
+    QEntangle,
+    QMeasure,
 
     // 0xE0-0xFF: Extensions
-    ExtPfx = 0xE0,
-    EscVnd = 0xF0,
-    EscLng = 0xFF,
+    ExtPfx,
+    EscVnd,
+    EscLng,
 }
 
+/// u8 → Opcode
 impl TryFrom<u8> for Opcode {
     type Error = ();
 
@@ -97,6 +98,49 @@ impl TryFrom<u8> for Opcode {
             0xF0 => Ok(Opcode::EscVnd),
             0xFF => Ok(Opcode::EscLng),
             _ => Err(()),
+        }
+    }
+}
+
+/// Opcode → u8 (역방향 변환)
+impl From<&Opcode> for u8 {
+    fn from(op: &Opcode) -> u8 {
+        match op {
+            Opcode::Legacy(b) => *b,
+            Opcode::Nec => 0x80,
+            Opcode::Pos => 0x81,
+            Opcode::Taut => 0x82,
+            Opcode::Cont => 0x83,
+            Opcode::ModAnd => 0x84,
+            Opcode::ModOr => 0x85,
+            Opcode::ModImp => 0x86,
+            Opcode::All => 0x90,
+            Opcode::Exist => 0x91,
+            Opcode::Nexist => 0x92,
+            Opcode::ExistU => 0x93,
+            Opcode::RelMap => 0x94,
+            Opcode::CmpMlt => 0xA0,
+            Opcode::CmpMgt => 0xA1,
+            Opcode::CmpInc => 0xA2,
+            Opcode::CmpFuz => 0xA3,
+            Opcode::SetSub => 0xB0,
+            Opcode::SetSup => 0xB1,
+            Opcode::SetInt => 0xB2,
+            Opcode::SetUni => 0xB3,
+            Opcode::SetDif => 0xB4,
+            Opcode::SetSym => 0xB5,
+            Opcode::SetMem => 0xB6,
+            Opcode::EqId => 0xC0,
+            Opcode::EqIso => 0xC1,
+            Opcode::EqSim => 0xC2,
+            Opcode::NeqSim => 0xC3,
+            Opcode::QPrepare => 0xD0,
+            Opcode::QSuperpose => 0xD1,
+            Opcode::QEntangle => 0xD2,
+            Opcode::QMeasure => 0xD3,
+            Opcode::ExtPfx => 0xE0,
+            Opcode::EscVnd => 0xF0,
+            Opcode::EscLng => 0xFF,
         }
     }
 }
