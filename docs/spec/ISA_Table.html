@@ -1,0 +1,432 @@
+<html><head><style>body {
+   color: black;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  th, td {
+    border: 1px solid #333;
+    padding: 8px;
+    text-align: left;
+  }
+  th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }</style></head><body><h2 id="isa_table-md">ISA_Table.md</h2>
+<h1 id="hexa-isa-full-table-v1-0-fixed-">Hexa-ISA Full Table v1.0 (FIXED)</h1>
+<p><strong>Total: 256 opcodes (8-bit)</strong> | <strong>Core Semantic: 0x80-0xDF (96 FIXED)</strong></p>
+<h2 id="opcode-partition-hexa-isa-compatible-required-">Opcode Partition (Hexa-ISA Compatible REQUIRED)</h2>
+<table>
+<thead>
+<tr>
+<th>Range</th>
+<th>Category</th>
+<th>Policy</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0x00-0x7F</code></td>
+<td>🛡️ Legacy</td>
+<td><strong>FIXED</strong></td>
+<td>x86/ARM mapped (MOV/ADD/JMP)</td>
+</tr>
+<tr>
+<td><code>0x80-0xDF</code></td>
+<td>🔒 Core Semantic</td>
+<td><strong>FIXED v1.0</strong></td>
+<td>Modal/Quantifier/Set/Quantum</td>
+</tr>
+<tr>
+<td><code>0xE0-0xFF</code></td>
+<td>🟢 Extensions</td>
+<td><strong>FREE</strong></td>
+<td>Vendor/Custom prefixes</td>
+</tr>
+</tbody>
+</table>
+<h2 id="core-opcode-map-table-i-">Core Opcode Map (Table I)</h2>
+<table>
+<thead>
+<tr>
+<th>Hex</th>
+<th>Family</th>
+<th>Canonical Operators</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0x00-0x7F</code></td>
+<td><strong>Legacy Binary</strong></td>
+<td><code>MOV, ADD, SUB, MUL, JMP...</code></td>
+<td>x86-64/ARM mapped [10]</td>
+</tr>
+<tr>
+<td><code>0x80-0x8F</code></td>
+<td><strong>Modal</strong></td>
+<td><code>NEC, POS, TAUT, CONT...</code></td>
+<td>Necessity/Possibility</td>
+</tr>
+<tr>
+<td><code>0x90-0x9F</code></td>
+<td><strong>Quantifier</strong></td>
+<td><code>ALL, EXIST, NEXIST...</code></td>
+<td>∀, ∃, scoped relations</td>
+</tr>
+<tr>
+<td><code>0xA0-0xAF</code></td>
+<td><strong>Comparison</strong></td>
+<td><code>CMPMLT, CMPMGT, FUZ...</code></td>
+<td>Total/partial orders</td>
+</tr>
+<tr>
+<td><code>0xB0-0xBF</code></td>
+<td><strong>Set-Theoretic</strong></td>
+<td><code>SETSUB, SETINT, UNI...</code></td>
+<td>⊆, ∩, ∪ operations</td>
+</tr>
+<tr>
+<td><code>0xC0-0xCF</code></td>
+<td><strong>Equivalence</strong></td>
+<td><code>EQID, EQSIM, NEQSIM...</code></td>
+<td>Identity vs similarity</td>
+</tr>
+<tr>
+<td><code>0xD0-0xDF</code></td>
+<td><strong>Quantum Control</strong></td>
+<td><code>QPREP, QSUP, QENT...</code></td>
+<td>Abstract contracts</td>
+</tr>
+</tbody>
+</table>
+<h2 id="complete-reference-table">Complete Reference Table</h2>
+<table>
+<thead>
+<tr>
+<th>Hex Code</th>
+<th>Mnemonic</th>
+<th>Operands</th>
+<th>Semantic Definition</th>
+<th>Binary Emulation / Fallback Logic</th>
+<th>Family</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0x00-0x7F</code></td>
+<td><code>(LEGACY)</code></td>
+<td>-</td>
+<td>Legacy Binary Region (x86-64/ARM Mapped)</td>
+<td>Native Execution</td>
+<td>0. Legacy</td>
+</tr>
+<tr>
+<td><code>0x80</code></td>
+<td><code>NEC</code></td>
+<td><code>rd, rs</code></td>
+<td>Necessity (□): Assert rs is necessarily true</td>
+<td>Check <code>rs == TRUE</code> (Strict)</td>
+<td>1. Modal (0x8)</td>
+</tr>
+<tr>
+<td><code>0x81</code></td>
+<td><code>POS</code></td>
+<td><code>rd, rs</code></td>
+<td>Possibility (◇): Assert rs is possibly true</td>
+<td>Check <code>rs != FALSE</code> (Non-zero)</td>
+<td>1. Modal (0x8)</td>
+</tr>
+<tr>
+<td><code>0x82</code></td>
+<td><code>TAUT</code></td>
+<td><code>rd</code></td>
+<td>Tautology (⊤): Load absolute logical Truth</td>
+<td><code>MOV rd, 1</code> (Max Confidence)</td>
+<td>1. Modal (0x8)</td>
+</tr>
+<tr>
+<td><code>0x83</code></td>
+<td><code>CONT</code></td>
+<td><code>rd</code></td>
+<td>Contradiction (⊥): Load absolute logical False</td>
+<td><code>MOV rd, 0</code> (Max Confidence)</td>
+<td>1. Modal (0x8)</td>
+</tr>
+<tr>
+<td><code>0x84</code></td>
+<td><code>MOD_AND</code></td>
+<td><code>rd, rs1, rs2</code></td>
+<td>Modal AND: True iff rs1 AND rs2 are necessary</td>
+<td>Bitwise AND (Strict prop)</td>
+<td>1. Modal (0x8)</td>
+</tr>
+<tr>
+<td><code>0x85</code></td>
+<td><code>MOD_OR</code></td>
+<td><code>rd, rs1, rs2</code></td>
+<td>Modal OR: True iff rs1 OR rs2 is possible</td>
+<td>Bitwise OR (Relaxed prop)</td>
+<td>1. Modal (0x8)</td>
+</tr>
+<tr>
+<td><code>0x86</code></td>
+<td><code>MOD_IMP</code></td>
+<td><code>rd, rs1, rs2</code></td>
+<td>Strict Implication (⊸): rs1 necessarily implies rs2</td>
+<td><code>(!rs1) OR rs2</code> check</td>
+<td>1. Modal (0x8)</td>
+</tr>
+<tr>
+<td><code>0x90</code></td>
+<td><code>ALL</code></td>
+<td><code>rd, ptr, len</code></td>
+<td>For All (∀): True if all elements match</td>
+<td>Loop; <code>FALSE</code> on mismatch</td>
+<td>2. Quantifier (0x9)</td>
+</tr>
+<tr>
+<td><code>0x91</code></td>
+<td><code>EXIST</code></td>
+<td><code>rd, ptr, len</code></td>
+<td>Exists (∃): True if &gt;= 1 element matches</td>
+<td>Loop; <code>TRUE</code> on match</td>
+<td>2. Quantifier (0x9)</td>
+</tr>
+<tr>
+<td><code>0x92</code></td>
+<td><code>NEXIST</code></td>
+<td><code>rd, ptr, len</code></td>
+<td>Not Exists (∄): True if 0 elements match</td>
+<td>Loop; <code>FALSE</code> on match</td>
+<td>2. Quantifier (0x9)</td>
+</tr>
+<tr>
+<td><code>0x93</code></td>
+<td><code>EXIST_U</code></td>
+<td><code>rd, ptr, len</code></td>
+<td>Unique (∃!): True if exactly 1 element matches</td>
+<td>Counter loop; <code>count == 1</code></td>
+<td>2. Quantifier (0x9)</td>
+</tr>
+<tr>
+<td><code>0x94</code></td>
+<td><code>REL_MAP</code></td>
+<td><code>rd, r1, r2</code></td>
+<td>Relation Map: Check relation R(r1, r2)</td>
+<td>Function pointer call</td>
+<td>2. Quantifier (0x9)</td>
+</tr>
+<tr>
+<td><code>0xA0</code></td>
+<td><code>CMP_MLT</code></td>
+<td><code>rd, r1, r2</code></td>
+<td>Much Less (≪): r1 &lt;&lt; r2 (Order of mag.)</td>
+<td><code>(r2 - r1) &gt; Threshold</code></td>
+<td>3. Comparison (0xA)</td>
+</tr>
+<tr>
+<td><code>0xA1</code></td>
+<td><code>CMP_MGT</code></td>
+<td><code>rd, r1, r2</code></td>
+<td>Much Greater (≫): r1 &gt;&gt; r2</td>
+<td><code>(r1 - r2) &gt; Threshold</code></td>
+<td>3. Comparison (0xA)</td>
+</tr>
+<tr>
+<td><code>0xA2</code></td>
+<td><code>CMP_INC</code></td>
+<td><code>rd, r1, r2</code></td>
+<td>Incomparable (≹): Undefined order</td>
+<td>Check NaN or disjoint</td>
+<td>3. Comparison (0xA)</td>
+</tr>
+<tr>
+<td><code>0xA3</code></td>
+<td><code>CMP_FUZ</code></td>
+<td><code>rd, r1, r2</code></td>
+<td>Fuzzy Compare: Probabilistic comparison</td>
+<td>Return probability score</td>
+<td>3. Comparison (0xA)</td>
+</tr>
+<tr>
+<td><code>0xB0</code></td>
+<td><code>SET_SUB</code></td>
+<td><code>rd, r1, r2</code></td>
+<td>Subset (⊆): r1 is subset of r2</td>
+<td><code>(r1 &amp; r2) == r1</code></td>
+<td>4. Set-Theory (0xB)</td>
+</tr>
+<tr>
+<td><code>0xB1</code></td>
+<td><code>SET_SUP</code></td>
+<td><code>rd, r1, r2</code></td>
+<td>Superset (⊇): r1 is superset of r2</td>
+<td><code>(r1 &amp; r2) == r2</code></td>
+<td>4. Set-Theory (0xB)</td>
+</tr>
+<tr>
+<td><code>0xB2</code></td>
+<td><code>SET_INT</code></td>
+<td><code>rd, r1, r2</code></td>
+<td>Intersection (∩): r1 AND r2</td>
+<td>Bitwise AND</td>
+<td>4. Set-Theory (0xB)</td>
+</tr>
+<tr>
+<td><code>0xB3</code></td>
+<td><code>SET_UNI</code></td>
+<td><code>rd, r1, r2</code></td>
+<td>Union (∪): r1 OR r2</td>
+<td>Bitwise OR</td>
+<td>4. Set-Theory (0xB)</td>
+</tr>
+<tr>
+<td><code>0xB4</code></td>
+<td><code>SET_DIF</code></td>
+<td><code>rd, r1, r2</code></td>
+<td>Difference (∖): r1 MINUS r2</td>
+<td><code>r1 &amp; (~r2)</code></td>
+<td>4. Set-Theory (0xB)</td>
+</tr>
+<tr>
+<td><code>0xB5</code></td>
+<td><code>SET_SYM</code></td>
+<td><code>rd, r1, r2</code></td>
+<td>Sym. Diff (△): XOR set</td>
+<td>Bitwise XOR</td>
+<td>4. Set-Theory (0xB)</td>
+</tr>
+<tr>
+<td><code>0xB6</code></td>
+<td><code>SET_MEM</code></td>
+<td><code>rd, el, set</code></td>
+<td>Membership (∈): element in set</td>
+<td>Bit test / Hash lookup</td>
+<td>4. Set-Theory (0xB)</td>
+</tr>
+<tr>
+<td><code>0xC0</code></td>
+<td><code>EQ_ID</code></td>
+<td><code>rd, r1, r2</code></td>
+<td>Identical (≡): Strict identity (Value+Type)</td>
+<td>Standard <code>==</code> check</td>
+<td>5. Equiv (0xC)</td>
+</tr>
+<tr>
+<td><code>0xC1</code></td>
+<td><code>EQ_ISO</code></td>
+<td><code>rd, r1, r2</code></td>
+<td>Isomorphic (≅): Structural equivalence</td>
+<td>Graph/Structure compare</td>
+<td>5. Equiv (0xC)</td>
+</tr>
+<tr>
+<td><code>0xC2</code></td>
+<td><code>EQ_SIM</code></td>
+<td><code>rd, r1, r2</code></td>
+<td>Similar (∼): Metric distance &lt; epsilon</td>
+<td><code>dist &lt; Meta.Threshold</code></td>
+<td>5. Equiv (0xC)</td>
+</tr>
+<tr>
+<td><code>0xC3</code></td>
+<td><code>NEQ_SIM</code></td>
+<td><code>rd, r1, r2</code></td>
+<td>Not Similar (≁): Metric distance &gt;= epsilon</td>
+<td><code>dist &gt;= Meta.Threshold</code></td>
+<td>5. Equiv (0xC)</td>
+</tr>
+<tr>
+<td><code>0xD0</code></td>
+<td><code>Q_PREP</code></td>
+<td><code>rd, st</code></td>
+<td>Prepare: Init qubit/state to 0 or 1</td>
+<td>Init prob vector</td>
+<td>6. Quantum (0xD)</td>
+</tr>
+<tr>
+<td><code>0xD1</code></td>
+<td><code>Q_SUP</code></td>
+<td><code>rd</code></td>
+<td>Superpose (H): Apply Hadamard</td>
+<td>Set prob to 0.5 (Uniform)</td>
+<td>6. Quantum (0xD)</td>
+</tr>
+<tr>
+<td><code>0xD2</code></td>
+<td><code>Q_ENT</code></td>
+<td><code>r1, r2</code></td>
+<td>Entangle (CNOT): Correlate states</td>
+<td>Bind vars in prob graph</td>
+<td>6. Quantum (0xD)</td>
+</tr>
+<tr>
+<td><code>0xD3</code></td>
+<td><code>Q_MEAS</code></td>
+<td><code>rd, r1</code></td>
+<td>Measure: Collapse state to binary</td>
+<td>Random sample</td>
+<td>6. Quantum (0xD)</td>
+</tr>
+<tr>
+<td><code>0xE0</code></td>
+<td><code>EXT_PFX</code></td>
+<td><code>imm</code></td>
+<td>Prefix: Extend Meta-field width</td>
+<td>Firmware decode state</td>
+<td>7. Extension (0xE)</td>
+</tr>
+<tr>
+<td><code>0xF0</code></td>
+<td><code>ESC_VND</code></td>
+<td><code>imm</code></td>
+<td>Vendor Escape: Custom accelerator func</td>
+<td>Driver passthrough</td>
+<td>7. Extension (0xF)</td>
+</tr>
+<tr>
+<td><code>0xFF</code></td>
+<td><code>ESC_LNG</code></td>
+<td><code>len</code></td>
+<td>Long Instruction: Variable length follows</td>
+<td>Multi-byte fetch</td>
+<td>7. Extension (0xF)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="meta-field-structure-byte-2-fixed-">Meta-Field Structure (Byte 2 - FIXED)</h2>
+<table>
+<thead>
+<tr>
+<th>Bit Range</th>
+<th>Field Name</th>
+<th>Description</th>
+<th>Values (Example)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>[7:6]</code></td>
+<td>Approx Mode</td>
+<td>Approximation operation permission</td>
+<td><code>00</code>: Precise Only<br><code>01</code>: Approx Allowed<br><code>10</code>: Hybrid<br><code>11</code>: Reserved</td>
+</tr>
+<tr>
+<td><code>[5:4]</code></td>
+<td>Fallback Policy</td>
+<td>Response when targets are not met</td>
+<td><code>00</code>: Abort (Error)<br><code>01</code>: Reduce (Safe Val)<br><code>10</code>: Retry<br><code>11</code>: Escalate (Slow)</td>
+</tr>
+<tr>
+<td><code>[3:0]</code></td>
+<td>Confidence Target</td>
+<td>Target Confidence Level (4-bit)</td>
+<td><code>0000</code>: Don&#39;t Care<br><code>1000</code>: &gt;50%<br><code>1100</code>: &gt;90%<br><code>1111</code>: &gt;99.9% (Strict)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Example: <code>0xC231</code> = EQ_SIM(0xC2) + High Conf + Approx OK</strong></p>
+</body></html>
